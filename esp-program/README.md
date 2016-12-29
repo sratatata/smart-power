@@ -1,12 +1,27 @@
 # esp-program
 
-It's job is to gather parameters from url and turn on/off rc switches. 
+It's job is to gather parameters from url and turn on/off rc switches.
 
 Simplifications:
 
 * Parametrized by query parameters
 * Works in local network
 * Wifi credentials hardcoded into rom
+
+# Usage
+
+Use your esp ip adress or mdns name if available:
+
+Turn on device with switches set to 01111 and 10000.
+
+```
+http://smartpowerap.local/rc/on?family=01111&device=10000
+```
+Turn off device with switches set to 01111 and 10000.
+
+```
+http://smartpowerap.local/rc/off?family=01111&device=10000
+```
 
 # Development
 
