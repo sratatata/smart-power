@@ -1,5 +1,10 @@
 TBD
 
+# Assembly
+Done circuit on stripboard. 
+
+![Stripboard prototype photo](./assembly_stripboard_small.jpg "Stripboard prototype")
+
 # Parts:
 
 * ESP8266-01 - wifi module and micro controller
