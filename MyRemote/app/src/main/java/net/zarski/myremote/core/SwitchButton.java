@@ -1,4 +1,4 @@
-package net.zarski.myremote;
+package net.zarski.myremote.core;
 
 import android.os.AsyncTask;
 
@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Created by lb_lb on 29.12.16.
  */
-abstract class SwitchButton {
+public abstract class SwitchButton {
     private ButtonId id;
     private String name;
     private Family family;

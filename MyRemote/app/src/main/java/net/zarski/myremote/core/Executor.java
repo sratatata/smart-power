@@ -1,4 +1,4 @@
-package net.zarski.myremote;
+package net.zarski.myremote.core;
 
 import java.io.IOException;
 

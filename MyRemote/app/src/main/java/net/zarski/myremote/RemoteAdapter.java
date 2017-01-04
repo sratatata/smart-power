@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import net.zarski.myremote.core.ButtonRow;
+import net.zarski.myremote.core.Remote;
+
 import java.io.IOException;
 
 public class RemoteAdapter extends ArrayAdapter<ButtonRow> {

@@ -3,17 +3,19 @@ package net.zarski.myremote;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import net.zarski.myremote.core.ButtonId;
+import net.zarski.myremote.core.ButtonOff;
+import net.zarski.myremote.core.ButtonOn;
+import net.zarski.myremote.core.Family;
+import net.zarski.myremote.core.Remote;
+
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         Remote remote = new Remote();
         Family f1 = new Family("11010");
-        remote.addRow("A", new ButtonOn(new ButtonId("10000"),f1 ), new ButtonOff(new ButtonId("10000"), f1));
+        remote.addRow("Drukarka", new ButtonOn(new ButtonId("10000"),f1 ), new ButtonOff(new ButtonId("10000"), f1));
         remote.addRow("B", new ButtonOn(new ButtonId("01000"),f1 ), new ButtonOff(new ButtonId("01000"), f1));
         remote.addRow("C", new ButtonOn(new ButtonId("00100"),f1 ), new ButtonOff(new ButtonId("00100"), f1));
-        remote.addRow("D", new ButtonOn(new ButtonId("00010"),f1 ), new ButtonOff(new ButtonId("00010"), f1));
+        remote.addRow("Farelka", new ButtonOn(new ButtonId("00010"),f1 ), new ButtonOff(new ButtonId("00010"), f1));
         Family f2 = new Family("01111");
-        remote.addRow("Test A", new ButtonOn(new ButtonId("10000"), f2), new ButtonOff(new ButtonId("10000"), f2));
-        remote.addRow("Test D", new ButtonOn(new ButtonId("00010"), f2), new ButtonOff(new ButtonId("00010"), f2));
+        remote.addRow("Zasilacz", new ButtonOn(new ButtonId("10000"), f2), new ButtonOff(new ButtonId("10000"), f2));
+        remote.addRow("Choinka", new ButtonOn(new ButtonId("00010"), f2), new ButtonOff(new ButtonId("00010"), f2));
         RemoteAdapter adapter = new RemoteAdapter(getApplicationContext(), remote);
         listview.setAdapter(adapter);
 

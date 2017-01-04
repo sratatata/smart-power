@@ -3,8 +3,9 @@ package net.zarski.myremote;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import net.zarski.myremote.core.SwitchButton;
+
 import java.io.IOException;
-import java.net.URL;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

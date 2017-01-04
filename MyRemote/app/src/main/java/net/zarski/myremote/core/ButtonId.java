@@ -1,4 +1,4 @@
-package net.zarski.myremote;
+package net.zarski.myremote.core;
 
 /**
  * Created by lb_lb on 29.12.16.

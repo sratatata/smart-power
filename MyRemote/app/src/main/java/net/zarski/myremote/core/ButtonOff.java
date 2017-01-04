@@ -1,6 +1,4 @@
-package net.zarski.myremote;
-
-import java.io.IOException;
+package net.zarski.myremote.core;
 
 /**
  * Created by lb_lb on 29.12.16.

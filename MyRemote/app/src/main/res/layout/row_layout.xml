@@ -8,7 +8,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/label" />
+        android:id="@+id/label"
+        android:textColor="#000000"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal" android:layout_width="match_parent"

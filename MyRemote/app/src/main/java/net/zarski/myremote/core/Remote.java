@@ -1,9 +1,6 @@
-package net.zarski.myremote;
-
-import android.widget.Button;
+package net.zarski.myremote.core;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
