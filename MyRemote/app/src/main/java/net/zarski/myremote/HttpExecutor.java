@@ -1,5 +1,6 @@
 package net.zarski.myremote;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -13,7 +14,14 @@ import okhttp3.Response;
 
 public class HttpExecutor extends AsyncTask<SwitchButton, Integer, String> {
 
-        // Do the long-running work in here
+    OkHttpClient client = new OkHttpClient();
+    private Context context;
+
+    public HttpExecutor(Context context) {
+        this.context = context;
+    }
+
+    // Do the long-running work in here
         protected String doInBackground(SwitchButton... buttons) {
             try {
                 return send(buttons[0]);
@@ -31,10 +39,11 @@ public class HttpExecutor extends AsyncTask<SwitchButton, Integer, String> {
         protected void onPostExecute(Long result) {
         }
 
-    OkHttpClient client = new OkHttpClient();
-
     private String send(SwitchButton button) throws IOException {
-        return run(String.format("http://192.168.1.15/rc/%s?family=%s&device=%s", button.getRcState().getRepresentation(), button.getFamily().toString(), button.getId().toString()));
+        return run(String.format(context.getString(R.string.url_pattern),
+                button.getRcState().getRepresentation(),
+                button.getFamily().toString(),
+                button.getId().toString()));
     }
 
     private String run(String url) throws IOException {

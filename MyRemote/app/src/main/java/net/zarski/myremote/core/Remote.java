@@ -22,10 +22,4 @@ public class Remote {
     public ButtonRow[] getButtons() {
         return buttons.toArray(new ButtonRow[buttons.size()]);
     }
-
-    public ButtonRow getButtonRow(int index){
-        return buttons.get(index);
-    }
-
-
 }
