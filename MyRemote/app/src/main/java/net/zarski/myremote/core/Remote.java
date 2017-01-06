@@ -13,7 +13,7 @@ public class Remote {
         buttons = new ArrayList<>();
     }
 
-    public void addRow(String label, ButtonOn b1, ButtonOff b2){
+    public void addRow(String label, SwitchButton b1, SwitchButton b2){
         b1.setName("On");
         b2.setName("Off");
         buttons.add(new ButtonRow(label, b1,b2));
