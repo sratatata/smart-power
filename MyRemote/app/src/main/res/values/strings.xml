@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MyRemote</string>
     <string formatted="false" name="url_pattern">http://192.168.1.15/rc/%s?family=%s&amp;device=%s</string>
+    <string name="family">Family: 00000</string>
+    <string name="device">Device: 00000</string>
+    <string name="label">Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

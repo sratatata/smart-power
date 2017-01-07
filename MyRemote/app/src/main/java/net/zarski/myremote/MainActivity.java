@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import net.zarski.myremote.core.ButtonId;
 import net.zarski.myremote.core.ButtonRow;
@@ -22,7 +24,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +39,15 @@ public class MainActivity extends Activity {
         try {
             remote = rs.load();
         } catch (IOException e) {
-            Log.w("My", "Loads defaults");
-            remote = loadDefaults();
+            remote= new Remote();
+            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         final RemoteAdapter adapter = new RemoteAdapter(getApplicationContext(), remote);
         listview.setAdapter(adapter);
 //        adapter.no
 
-        AndroidRemote androidRemote = new AndroidRemote(remote, rs, adapter);
+        AndroidRemote androidRemote = new AndroidRemote(remote, rs, adapter, this);
         androidRemote.setRowAddedListener(new Remote.RowAddedListener(){
             public void onRowAdded(Remote remote, ButtonRow row){
                 try {
@@ -63,18 +65,4 @@ public class MainActivity extends Activity {
 
 
     }
-
-    private Remote loadDefaults(){
-        Remote remote = new Remote();
-        Family f1 = new Family("11010");
-        remote.addRow("Drukarka", new SwitchButton(new ButtonId("10000"),f1 , RcState.ON), new SwitchButton(new ButtonId("10000"), f1, RcState.OFF));
-        remote.addRow("B", new SwitchButton(new ButtonId("01000"),f1 , RcState.ON), new SwitchButton(new ButtonId("01000"), f1, RcState.OFF));
-        remote.addRow("C", new SwitchButton(new ButtonId("00100"),f1, RcState.ON ), new SwitchButton(new ButtonId("00100"), f1, RcState.OFF));
-        remote.addRow("Farelka", new SwitchButton(new ButtonId("00010"),f1, RcState.ON ), new SwitchButton(new ButtonId("00010"), f1, RcState.OFF));
-        Family f2 = new Family("01111");
-        remote.addRow("Zasilacz", new SwitchButton(new ButtonId("10000"), f2, RcState.ON), new SwitchButton(new ButtonId("10000"), f2, RcState.OFF));
-        remote.addRow("Choinka", new SwitchButton(new ButtonId("00010"), f2, RcState.ON), new SwitchButton(new ButtonId("00010"), f2, RcState.OFF));
-        return remote;
-    }
-
 }

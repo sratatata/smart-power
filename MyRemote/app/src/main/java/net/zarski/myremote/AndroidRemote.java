@@ -1,5 +1,8 @@
 package net.zarski.myremote;
 
+import android.content.Context;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import net.zarski.myremote.core.ButtonId;
@@ -17,11 +20,13 @@ public class AndroidRemote extends Remote implements View.OnClickListener{
     private Remote remote;
     private RemoteStore remoteStorage;
     private RemoteAdapter adapter;
+    private Context context;
 
-    public AndroidRemote(Remote remote, RemoteStore rs, RemoteAdapter adapter) {
+    public AndroidRemote(Remote remote, RemoteStore rs, RemoteAdapter adapter, Context context) {
         this.remote = remote;
         remoteStorage = rs;
         this.adapter = adapter;
+        this.context = context;
     }
 
     public void addRow(String label, SwitchButton b1, SwitchButton b2) {
@@ -39,9 +44,8 @@ public class AndroidRemote extends Remote implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        Family f1 = new Family("11010");
-
-        this.remote.addRow("Test", new SwitchButton(new ButtonId("10000"),f1 , RcState.ON), new SwitchButton(new ButtonId("10000"), f1, RcState.OFF));
+        DialogFragment newFragment = MyDialog.newInstance(remote);
+        newFragment.show(((FragmentActivity)context).getSupportFragmentManager(), "missiles");
     }
 
 }
