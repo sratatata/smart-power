@@ -8,18 +8,42 @@ import java.util.List;
  */
 public class Remote {
     private List<ButtonRow> buttons;
+    private List<RowAddedListener> rowAddedListeners;
 
     public Remote() {
         buttons = new ArrayList<>();
+        rowAddedListeners = new ArrayList<>();
     }
 
-    public void addRow(String label, ButtonOn b1, ButtonOff b2){
+    public void addRow(String label, SwitchButton b1, SwitchButton b2){
         b1.setName("On");
         b2.setName("Off");
-        buttons.add(new ButtonRow(label, b1,b2));
+        ButtonRow row = new ButtonRow(label, b1,b2);
+        buttons.add(row);
+        fireRowAddedListener(row);
     }
 
-    public ButtonRow[] getButtons() {
-        return buttons.toArray(new ButtonRow[buttons.size()]);
+    private void fireRowAddedListener(ButtonRow row) {
+        for (RowAddedListener listener : rowAddedListeners ) {
+            //todo workaround check null
+            if(listener != null){
+                listener.onRowAdded(this, row);
+            }
+        }
+    }
+
+    public List<ButtonRow> getButtons() {
+        return buttons;
+    }
+
+    public void setRowAddedListener(RowAddedListener listener){
+        if(rowAddedListeners == null){
+            rowAddedListeners = new ArrayList<>();
+        }
+        rowAddedListeners.add(listener);
+    }
+
+    public interface RowAddedListener{
+        void onRowAdded(Remote remote, ButtonRow row);
     }
 }

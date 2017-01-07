@@ -41,7 +41,7 @@ public class HttpExecutor extends AsyncTask<SwitchButton, Integer, String> {
 
     private String send(SwitchButton button) throws IOException {
         return run(String.format(context.getString(R.string.url_pattern),
-                button.getRcState().getRepresentation(),
+                button.getFunction().getRepresentation(),
                 button.getFamily().toString(),
                 button.getId().toString()));
     }
