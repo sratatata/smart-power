@@ -18,11 +18,11 @@ import net.zarski.myremote.core.SwitchButton;
 /**
  * Created by lb_lb on 07.01.17.
  */
-public class MyDialog extends DialogFragment {
+public class AddButtonDialog extends DialogFragment {
     private Remote remote;
 
     public static DialogFragment newInstance(Remote remote){
-        MyDialog d = new MyDialog();
+        AddButtonDialog d = new AddButtonDialog();
         d.remote = remote;
         return d;
     }
