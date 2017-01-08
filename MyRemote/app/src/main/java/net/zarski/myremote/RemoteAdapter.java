@@ -28,8 +28,13 @@ public class RemoteAdapter extends ArrayAdapter<ButtonRow> {
 
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.row_layout, parent, false);
+        View rowView = null;
+        if(convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            rowView = inflater.inflate(R.layout.row_layout, parent, false);
+        }else{
+            rowView = convertView;
+        }
 
         TextView textView = (TextView) rowView.findViewById(R.id.label);
         final SwitchButton b1 = getItem(position).b1;
@@ -68,7 +73,7 @@ public class RemoteAdapter extends ArrayAdapter<ButtonRow> {
     @Override
     public void remove(ButtonRow object) {
         super.remove(object);
-
-        remote.remove(object);
     }
+
+
 }

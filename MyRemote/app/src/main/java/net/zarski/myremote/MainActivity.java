@@ -92,11 +92,6 @@ public class MainActivity extends FragmentActivity {
         };
         // set creator
         listview.setMenuCreator(creator);
-
-
-
-
-
         listview.setAdapter(adapter);
 
         AndroidRemote androidRemote = new AndroidRemote(remote, rs, adapter, this);
@@ -110,7 +105,9 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
+
         listview.setOnMenuItemClickListener(androidRemote);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(androidRemote);
 

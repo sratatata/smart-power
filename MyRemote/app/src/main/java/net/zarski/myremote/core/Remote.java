@@ -9,10 +9,12 @@ import java.util.List;
 public class Remote {
     private List<ButtonRow> buttons;
     private List<RowAddedListener> rowAddedListeners;
+    private List<RowDeletedListener> rowDeletedListeners;
 
     public Remote() {
         buttons = new ArrayList<>();
         rowAddedListeners = new ArrayList<>();
+        rowDeletedListeners = new ArrayList<>();
     }
 
     public void addRow(String label, SwitchButton b1, SwitchButton b2){
@@ -32,6 +34,15 @@ public class Remote {
         }
     }
 
+    private void fireRowDeletedListener(ButtonRow row) {
+        for (RowDeletedListener listener : rowDeletedListeners ) {
+            //todo workaround check null
+            if(listener != null){
+                listener.onRowDeleted(this, row);
+            }
+        }
+    }
+
     public List<ButtonRow> getButtons() {
         return buttons;
     }
@@ -45,9 +56,21 @@ public class Remote {
 
     public void remove(ButtonRow row) {
         buttons.remove(row);
+        fireRowDeletedListener(row);
+    }
+
+    public void setRowDeletedListener(RowDeletedListener listener) {
+        if(rowDeletedListeners == null){
+            rowDeletedListeners = new ArrayList<>();
+        }
+        rowDeletedListeners.add(listener);
     }
 
     public interface RowAddedListener{
         void onRowAdded(Remote remote, ButtonRow row);
+    }
+
+    public interface RowDeletedListener {
+        void onRowDeleted(Remote remote, ButtonRow row);
     }
 }

@@ -43,9 +43,14 @@ public class AndroidRemote extends Remote implements View.OnClickListener, Swipe
     }
 
     @Override
+    public void setRowDeletedListener(RowDeletedListener listener) {
+        this.remote.setRowDeletedListener(listener);
+    }
+
+    @Override
     public void onClick(View view) {
         DialogFragment newFragment = AddButtonDialog.newInstance(remote);
-        newFragment.show(((FragmentActivity) context).getSupportFragmentManager(), "missiles");
+        newFragment.show(((FragmentActivity) context).getSupportFragmentManager(), "AddButton");
     }
 
     @Override
@@ -55,8 +60,10 @@ public class AndroidRemote extends Remote implements View.OnClickListener, Swipe
         switch (index) {
             case 0:
                 // delete
+                this.remove(row);
                 adapter.remove(row);
                 adapter.notifyDataSetChanged();
+
                 try {
                     remoteStorage.save(remote);
                 } catch (IOException e) {
@@ -64,6 +71,6 @@ public class AndroidRemote extends Remote implements View.OnClickListener, Swipe
                 }
                 break;
         }
-        return false;
+        return true;
     }
 }
