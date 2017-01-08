@@ -17,10 +17,13 @@ import java.io.IOException;
 
 public class RemoteAdapter extends ArrayAdapter<ButtonRow> {
     private final Context context;
+    private Remote remote;
 
     public RemoteAdapter(Context context, Remote remote) {
         super(context, -1, remote.getButtons());
         this.context = context;
+
+        this.remote = remote;
     }
 
     @Override
@@ -60,5 +63,12 @@ public class RemoteAdapter extends ArrayAdapter<ButtonRow> {
         textView.setText(getItem(position).label);
 
         return rowView;
+    }
+
+    @Override
+    public void remove(ButtonRow object) {
+        super.remove(object);
+
+        remote.remove(object);
     }
 }

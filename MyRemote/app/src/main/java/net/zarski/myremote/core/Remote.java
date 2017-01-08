@@ -43,6 +43,10 @@ public class Remote {
         rowAddedListeners.add(listener);
     }
 
+    public void remove(ButtonRow row) {
+        buttons.remove(row);
+    }
+
     public interface RowAddedListener{
         void onRowAdded(Remote remote, ButtonRow row);
     }
