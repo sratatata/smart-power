@@ -2,12 +2,18 @@ package net.zarski.myremote;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +37,17 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageButton settingsButton = (ImageButton) findViewById(R.id.settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment newFragment = SettingsDialog.newInstance();
+                newFragment.show(getSupportFragmentManager(), String.valueOf(R.string.settings));
+            }
+        });
+
+
+
         final ListView listview = (ListView) findViewById(R.id.listview);
         listview.setItemsCanFocus(true);
 
@@ -45,14 +62,12 @@ public class MainActivity extends FragmentActivity {
 
         final RemoteAdapter adapter = new RemoteAdapter(getApplicationContext(), remote);
         listview.setAdapter(adapter);
-//        adapter.no
 
         AndroidRemote androidRemote = new AndroidRemote(remote, rs, adapter, this);
         androidRemote.setRowAddedListener(new Remote.RowAddedListener(){
             public void onRowAdded(Remote remote, ButtonRow row){
                 try {
                     rs.save(remote);
-//                    adapter.add(row);
                     adapter.notifyDataSetChanged();
                 } catch (IOException e) {
                 }

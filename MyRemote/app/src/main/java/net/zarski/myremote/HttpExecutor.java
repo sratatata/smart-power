@@ -1,6 +1,7 @@
 package net.zarski.myremote;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HttpExecutor extends AsyncTask<SwitchButton, Integer, String> {
+    public static final String PREFS_NAME = "MyRemoteSettings";
 
     OkHttpClient client = new OkHttpClient();
     private Context context;
@@ -40,7 +42,12 @@ public class HttpExecutor extends AsyncTask<SwitchButton, Integer, String> {
         }
 
     private String send(SwitchButton button) throws IOException {
+        // Restore preferences
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+        String ip = settings.getString("ip_setting", "192.168.1.15");
+
         return run(String.format(context.getString(R.string.url_pattern),
+                ip,
                 button.getFunction().getRepresentation(),
                 button.getFamily().toString(),
                 button.getId().toString()));
