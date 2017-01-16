@@ -1,0 +1,8 @@
+.settings
+.build*
+*signature*.xml
+*.wgt
+.*_delta*
+.project
+.sign
+.tproject
