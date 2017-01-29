@@ -46,19 +46,6 @@ function Remote(buttons) {
 					b.addEventListener("swipelist.right", function(evt) {
 						value.on();
 					});
-					
-					// var timeOut;
-					// b.addEventListener("touchend", function() {
-					// clearTimeout(timeOut);
-					// });
-					//
-					// b.addEventListener("touchstart", function(event) {
-					// timeOut = setTimeout(function(){
-					// that.buttons.splice(index, 1);
-					// save("r1", that);
-					// location.reload();
-					// },5000);
-					// });
 				});
 	};
 

@@ -26,8 +26,8 @@
 			</div>
 		</div>
 		<div class="ui-footer">
-
-			<a href="#popup" class="ui-btn" data-rel="popup">Add</a>
+		    <a href="#popup" class="ui-btn" data-rel="popup">Add</a>
+			<a href="#popup-remove" class="ui-btn" data-rel="popup">Remove</a>
 		</div>
 
 		<div id="popup" class="ui-popup">
@@ -38,6 +38,15 @@
 				<label for="family">Family</label> <input type="text" name="family"><br>
 				<label for="device">Device</label> <input type="text" name="device"><br>
 				<button name="save">Save</button>
+				<button name="cancel">Cancel</button>
+			</div>
+		</div>
+		
+		<div id="popup-remove" class="ui-popup">
+			<div class="ui-popup-header">Remove device</div>
+			<div class="ui-popup-content">
+				<label for="label">Label</label> <input type="text" name="label"><br>
+				<button name="save">Remove</button>
 				<button name="cancel">Cancel</button>
 			</div>
 		</div>
