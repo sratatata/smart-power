@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="MyRemote" />
-
-    <title>Smart-Power: MyRemote</title>
-	<link rel="stylesheet" type="text/css" href="tizen-web-ui-fw/latest/themes/tizen-white/tizen-web-ui-fw-theme.css" name="tizen-theme"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-
-    <script src="js/lib/jquery-3.1.1.min.js"></script>
-<!--     <script src="js/lib/handlebars-v4.0.5.js"></script> -->
-    <script src="js/core.js"></script>
-    <script src="js/main.js"></script>
-
-
-<!--     <script id="entry-template" type="text/x-handlebars-template"> -->
-<!-- {{#each buttons}} -->
-<!--   		<tr><td>{{label}}</td><td><button class="{{this.on}}">On</button</td><td><a class={{this.off}}>Off</a></td></tr> -->
-<!-- {{/each}} -->
-<!-- 	</script> -->
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>Smart Power</title>
+<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+<!-- load theme file for your application -->
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div id="main" class="page">
-        <table id="buttons">
+	<div class="ui-page" id="pageSwipeList">
+		<div class="ui-content">
+			<!--List items that can be swiped-->
+			<ul id="buttons" class="ui-listview ui-swipelist-list">
+			</ul>
+			<!--Swipe actions-->
+			<div class="ui-swipelist">
+				<div class="ui-swipelist-left">
+					<div class="ui-swipelist-icon"></div>
+					<div class="ui-swipelist-text">Off</div>
+				</div>
+				<div class="ui-swipelist-right">
+					<div class="ui-swipelist-icon"></div>
+					<div class="ui-swipelist-text">On</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui-footer">
 
-        </table>
-    </div>
+			<a href="#popup" class="ui-btn" data-rel="popup">Add</a>
+		</div>
+
+		<div id="popup" class="ui-popup">
+			<div class="ui-popup-header">Add device</div>
+			<div class="ui-popup-content">
+				<label for="ip">IP</label> <input type="text" name="ip"><br>
+				<label for="label">Label</label> <input type="text" name="label"><br>
+				<label for="family">Family</label> <input type="text" name="family"><br>
+				<label for="device">Device</label> <input type="text" name="device"><br>
+				<button name="save">Save</button>
+				<button name="cancel">Cancel</button>
+			</div>
+		</div>
+	</div>
 </body>
-
+<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
+<!-- load javascript file for your application -->
+<script type="text/javascript" src="js/lib/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/core.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>
-
-

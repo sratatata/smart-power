@@ -1,4 +1,5 @@
-function Button(label, family, device) {
+function Button(ip, label, family, device) {
+	this.ip = ip;
 	this.label = label;
 	this.family = family;
 	this.device = device;
@@ -6,23 +7,23 @@ function Button(label, family, device) {
 	this.on = function() {
 
 		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", "http://192.168.1.15/rc/on?family=" + this.family
-				+ "&device=" + this.device);
+		xmlHttp.open("GET", "http://" + this.ip + "/rc/on?family="
+				+ this.family + "&device=" + this.device);
 		xmlHttp.send();
 	};
 
 	this.off = function() {
 		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", "http://192.168.1.15/rc/off?family="
+		xmlHttp.open("GET", "http://" + this.ip + "/rc/off?family="
 				+ this.family + "&device=" + this.device);
 		xmlHttp.send();
 	};
-	
-	this.class_on = function(){
+
+	this.class_on = function() {
 		return this.label.toLowerCase() + "_on";
 	}
-	
-	this.class_off = function(){
+
+	this.class_off = function() {
 		return this.label.toLowerCase() + "_off";
 	}
 }
@@ -31,14 +32,41 @@ function Remote(buttons) {
 	this.buttons = buttons;
 
 	this.render = function(element) {
-		$.each(buttons, function(index , value) {
-			element.append("<tr><td>"+value.label+'</td><td><button class="'+value.class_on()+'">On</button></td><td><button class="'+value.class_off()+'">Off</button></td></tr>');
-			$("button."+value.class_on()).click(function(){
-				value.on();
-			});
-			$("button."+value.class_off()).click(function(){
-				value.off();
-			});
-		});
+		var that = this;
+		$.each(this.buttons,
+				function(index, value) {
+					element.append("<li id='b_" + index + "'>" + value.label
+							+ '</li>');
+
+					var b = document.getElementById('b_' + index);
+					b.addEventListener("swipelist.left", function(evt) {
+						value.off();
+					});
+
+					b.addEventListener("swipelist.right", function(evt) {
+						value.on();
+					});
+					
+					// var timeOut;
+					// b.addEventListener("touchend", function() {
+					// clearTimeout(timeOut);
+					// });
+					//
+					// b.addEventListener("touchstart", function(event) {
+					// timeOut = setTimeout(function(){
+					// that.buttons.splice(index, 1);
+					// save("r1", that);
+					// location.reload();
+					// },5000);
+					// });
+				});
 	};
+
+	this.addButton = function(button) {
+		this.buttons.push(button);
+	}
+
+	this.getData = function() {
+		return this.buttons;
+	}
 }
