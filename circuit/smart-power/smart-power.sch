@@ -1,0 +1,273 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:LF33ABV
+LIBS:esp-01
+LIBS:433-module
+LIBS:smart-power-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L CONN_01X05 P1
+U 1 1 589F22AA
+P 1070 1350
+F 0 "P1" H 1070 1650 50  0000 C CNN
+F 1 "USB_A" V 1170 1350 50  0000 C CNN
+F 2 "Connect:USB_A" H 1070 1350 50  0001 C CNN
+F 3 "" H 1070 1350 50  0000 C CNN
+	1    1070 1350
+	-1   0    0    1   
+$EndComp
+$Comp
+L CONN_02X04 P2
+U 1 1 589F22F1
+P 4800 1500
+F 0 "P2" H 4800 1750 50  0000 C CNN
+F 1 "ESP-8266-01" H 4800 1250 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x04_Pitch2.54mm" H 4800 300 50  0001 C CNN
+F 3 "" H 4800 300 50  0000 C CNN
+	1    4800 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR01
+U 1 1 589F2372
+P 1490 1250
+F 0 "#PWR01" H 1490 1000 50  0001 C CNN
+F 1 "GND" H 1490 1100 50  0000 C CNN
+F 2 "" H 1490 1250 50  0000 C CNN
+F 3 "" H 1490 1250 50  0000 C CNN
+	1    1490 1250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +5V #PWR02
+U 1 1 589F238E
+P 1490 1550
+F 0 "#PWR02" H 1490 1400 50  0001 C CNN
+F 1 "+5V" H 1490 1690 50  0000 C CNN
+F 2 "" H 1490 1550 50  0000 C CNN
+F 3 "" H 1490 1550 50  0000 C CNN
+	1    1490 1550
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C1
+U 1 1 589F23DA
+P 2050 2300
+F 0 "C1" H 2060 2370 50  0000 L CNN
+F 1 "0.1 uF" H 1710 2290 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 2050 2300 50  0001 C CNN
+F 3 "" H 2050 2300 50  0000 C CNN
+	1    2050 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L LF33ABV Q1
+U 1 1 589F29B2
+P 2850 2200
+F 0 "Q1" H 2664 2559 50  0000 L CNN
+F 1 "LF33CV" H 2700 2100 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220_Neutral123_Vertical_LargePads" H 2850 2200 50  0001 L CNN
+F 3 "0.58 USD" H 2850 2200 50  0001 L CNN
+F 4 "TO-220 STMicroelectronics" H 2850 2200 50  0001 L CNN "Package"
+F 5 "STMicroelectronics" H 2850 2200 50  0001 L CNN "MF"
+F 6 "Good" H 2850 2200 50  0001 L CNN "Availability"
+F 7 "LFXX Series 500 mA 3.3 V Fixed VLDO Voltage Regulator with Inhibit -TO-220" H 2850 2200 50  0001 L CNN "Description"
+F 8 "LF33ABV" H 2850 2200 50  0001 L CNN "MP"
+	1    2850 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP_Small C2
+U 1 1 589F2D02
+P 3700 2300
+F 0 "C2" H 3710 2370 50  0000 L CNN
+F 1 "2.2uF" H 3710 2220 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D6.3mm_P2.50mm" H 3700 2300 50  0001 C CNN
+F 3 "" H 3700 2300 50  0000 C CNN
+	1    3700 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 589F2D6E
+P 3700 2600
+F 0 "#PWR03" H 3700 2350 50  0001 C CNN
+F 1 "GND" H 3700 2450 50  0000 C CNN
+F 2 "" H 3700 2600 50  0000 C CNN
+F 3 "" H 3700 2600 50  0000 C CNN
+	1    3700 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR04
+U 1 1 589F2D8C
+P 1900 2600
+F 0 "#PWR04" H 1900 2350 50  0001 C CNN
+F 1 "GND" H 1900 2450 50  0000 C CNN
+F 2 "" H 1900 2600 50  0000 C CNN
+F 3 "" H 1900 2600 50  0000 C CNN
+	1    1900 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR05
+U 1 1 589F2DDE
+P 1900 2200
+F 0 "#PWR05" H 1900 2050 50  0001 C CNN
+F 1 "+5V" H 1900 2340 50  0000 C CNN
+F 2 "" H 1900 2200 50  0000 C CNN
+F 3 "" H 1900 2200 50  0000 C CNN
+	1    1900 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 589F2FEB
+P 5200 950
+F 0 "#PWR06" H 5200 700 50  0001 C CNN
+F 1 "GND" H 5200 800 50  0000 C CNN
+F 2 "" H 5200 950 50  0000 C CNN
+F 3 "" H 5200 950 50  0000 C CNN
+	1    5200 950 
+	-1   0    0    1   
+$EndComp
+$Comp
+L SW_PUSH SW2
+U 1 1 589F36F6
+P 5550 1550
+F 0 "SW2" H 5700 1660 50  0000 C CNN
+F 1 "RST" H 5550 1470 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH-12mm" H 5550 1550 50  0001 C CNN
+F 3 "" H 5550 1550 50  0000 C CNN
+	1    5550 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW1
+U 1 1 589F3835
+P 4150 1450
+F 0 "SW1" H 4300 1560 50  0000 C CNN
+F 1 "SW_RESET" H 4150 1370 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH-12mm" H 4150 1450 50  0001 C CNN
+F 3 "" H 4150 1450 50  0000 C CNN
+	1    4150 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L 433-module Q2
+U 1 1 589F410B
+P 6800 1150
+F 0 "Q2" H 6810 1450 60  0000 C CNN
+F 1 "433-module" H 6810 910 60  0000 C CNN
+F 2 "Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-4pol" H 6800 1150 60  0001 C CNN
+F 3 "" H 6800 1150 60  0001 C CNN
+	1    6800 1150
+	1    0    0    -1  
+$EndComp
+Text GLabel 6370 1820 3    60   Input ~ 0
+Antena
+Wire Wire Line
+	1900 2200 2150 2200
+Wire Wire Line
+	1900 2400 2150 2400
+Wire Wire Line
+	5200 2200 3550 2200
+Wire Wire Line
+	1900 2400 1900 2600
+Connection ~ 2050 2400
+Wire Wire Line
+	3700 2400 3700 2600
+Connection ~ 2050 2200
+Wire Wire Line
+	5050 1650 5200 1650
+Wire Wire Line
+	5200 1450 5200 2200
+Connection ~ 3700 2200
+Wire Wire Line
+	5250 1550 5050 1550
+Wire Wire Line
+	4500 1350 4500 1050
+Wire Wire Line
+	3850 1050 5850 1050
+Wire Wire Line
+	5850 1020 5850 1550
+Connection ~ 4500 1350
+Wire Wire Line
+	4550 1350 4500 1350
+Wire Wire Line
+	5200 950  5200 1050
+Connection ~ 5200 1050
+Wire Wire Line
+	4550 1450 4450 1450
+Wire Wire Line
+	3850 1450 3850 1050
+Connection ~ 4500 1050
+Wire Wire Line
+	5050 1450 5200 1450
+Connection ~ 5200 1650
+Wire Wire Line
+	5850 1020 6430 1020
+Connection ~ 5850 1050
+Wire Wire Line
+	5200 1850 6030 1850
+Wire Wire Line
+	6030 1850 6030 1200
+Wire Wire Line
+	6030 1200 6430 1200
+Connection ~ 5200 1850
+Wire Wire Line
+	4430 1110 6430 1110
+Wire Wire Line
+	4430 1110 4430 1550
+Wire Wire Line
+	4430 1550 4550 1550
+Wire Wire Line
+	6370 1820 6370 1290
+Wire Wire Line
+	6370 1290 6430 1290
+Wire Wire Line
+	1270 1250 1490 1250
+Wire Wire Line
+	1270 1550 1490 1550
+$EndSCHEMATC
